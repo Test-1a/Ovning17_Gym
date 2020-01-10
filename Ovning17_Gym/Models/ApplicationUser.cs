@@ -8,6 +8,6 @@ namespace Ovning17_Gym.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public virtual ICollection<ApplicationUserGymClass> AttendedClasses { get; set; }
+        public ICollection<ApplicationUserGymClass> AttendedClasses { get; set; }
     }
 }

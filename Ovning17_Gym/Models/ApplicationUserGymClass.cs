@@ -9,7 +9,12 @@ namespace Ovning17_Gym.Models
     {
         //Not needed due to using composit key
         //public int Id { get; set; }
+
+        //Foreign keys
         public int GymClassId { get; set; }
+
+        //string, not int because AppUser inherits of IdentityUser 
+        //which takes a string
         public string ApplicationUserId { get; set; }
 
         //NavigationProperties
