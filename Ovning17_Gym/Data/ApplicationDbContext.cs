@@ -14,5 +14,13 @@ namespace Ovning17_Gym.Data
         }
 
         public DbSet<Ovning17_Gym.Models.GymClass> GymClasses { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<ApplicationUserGymClass>()
+                .HasKey(t => new { t.ApplicationUserId, t.GymClassId});
+        }
     }
 }
