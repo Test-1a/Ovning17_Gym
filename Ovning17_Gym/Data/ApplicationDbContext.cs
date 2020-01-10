@@ -12,5 +12,7 @@ namespace Ovning17_Gym.Data
             : base(options)
         {
         }
+
+        public DbSet<Ovning17_Gym.Models.GymClass> GymClasses { get; set; }
     }
 }
