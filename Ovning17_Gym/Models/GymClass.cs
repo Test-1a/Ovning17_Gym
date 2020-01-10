@@ -13,5 +13,7 @@ namespace Ovning17_Gym.Models
         public TimeSpan Duration { get; set; }
         public DateTime EndTime { get { return StartTime + Duration; }  }
         public string Description { get; set; }
+
+        public virtual ICollection<ApplicationUserGymClass> AttendingMembers { get; set; }
     }
 }
