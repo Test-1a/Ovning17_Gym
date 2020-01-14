@@ -81,6 +81,7 @@ namespace Ovning17_Gym.Controllers
                 .Include(g => g.AttendingMembers)
                 .ThenInclude(a => a.ApplicationUser)
                 .FirstOrDefaultAsync(m => m.Id == id);
+            //.ToListAsync();
             if (gymClass == null)
             {
                 return NotFound();

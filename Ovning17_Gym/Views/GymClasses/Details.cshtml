@@ -38,11 +38,15 @@
         </dd>
         @foreach (var item in Model.AttendingMembers)
         {
-            item.ApplicationUser.Email.
-           // UserManager.GetEmailAsync(User.);
-           
-       }
-    </dl>
+            <dt class="col-sm-2">
+                @item.ApplicationUser.Email
+                // UserManager.GetEmailAsync(User.);
+            </dt>
+            <dd class="col-sm-10">
+                @item.ApplicationUser.Email
+            </dd>
+                }
+        </dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
