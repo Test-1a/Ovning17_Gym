@@ -42,6 +42,24 @@ namespace Ovning17_Gym.Data
                     }
                 }
 
+                var emails = new[] { "admin@gym.se" };
+
+                foreach (var email in emails)
+                {
+                    var foundUser = await userManager.FindByEmailAsync(email);
+
+                    if (foundUser != null) continue;
+
+                    var user = new ApplicationUser { UserName = email, Email = email } ;
+
+                    var addUserResult = await userManager.CreateAsync(user, adminPW);
+
+                    if (!addUserResult.Succeeded)
+                    {
+                        throw new Exception(string.Join("\n", addUserResult.Errors));
+                    }
+                }
+
                 context.SaveChanges();
             }
         }
