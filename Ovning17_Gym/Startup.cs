@@ -66,7 +66,7 @@ namespace Ovning17_Gym
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=GymClasses}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
