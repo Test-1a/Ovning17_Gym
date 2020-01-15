@@ -62,6 +62,7 @@ namespace Ovning17_Gym
             app.UseAuthentication();
             app.UseAuthorization();
 
+            //Routing Middleware
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

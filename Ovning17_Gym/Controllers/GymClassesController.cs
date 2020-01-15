@@ -12,7 +12,8 @@ using Ovning17_Gym.Models;
 
 namespace Ovning17_Gym.Controllers
 {
-    [Authorize]
+    //Detta är ett Filter
+    [Authorize]  //på hela Controllern
     public class GymClassesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -28,9 +29,15 @@ namespace Ovning17_Gym.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
+            //if (!IsUserAuthorized)
+            //{
+
+            //}
+
             return View(await _context.GymClasses.ToListAsync());
         }
 
+        [Authorize(Roles = "Member")]
         public async Task<IActionResult> BookingToogle(int? id)
         {
             if (id == null) return NotFound();
@@ -93,17 +100,20 @@ namespace Ovning17_Gym.Controllers
             return View(gymClass);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: GymClasses/Create
         public IActionResult Create()
         {
             return View();
         }
 
+
         // POST: GymClasses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,Name,StartTime,Duration,Description")] GymClass gymClass)
         {
             if (ModelState.IsValid)
@@ -115,6 +125,7 @@ namespace Ovning17_Gym.Controllers
             return View(gymClass);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: GymClasses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -136,6 +147,7 @@ namespace Ovning17_Gym.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,StartTime,Duration,Description")] GymClass gymClass)
         {
             if (id != gymClass.Id)
